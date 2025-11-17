@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Xaruto — Cabeçalho</title>
+  <style>
+    :root{--bg:#f6f6f6;--accent:#3a2b18}
+    html,body{height:100%;margin:0;background:var(--bg);font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+
+    /* Header fixo no topo */
+    header{position:fixed;top:0;left:0;right:0;height:120px;display:flex;align-items:center;justify-content:center;padding:12px 20px;box-shadow:0 6px 20px rgba(30,30,30,0.06);background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6));backdrop-filter:blur(4px);z-index:100}
+
+    .brand{display:flex;align-items:center;gap:14px}
+
+    /* container onde a imagem substitui o X */
+    .logo-wrap{position:relative;width:64px;height:64px;flex:0 0 64px}
+    .logo{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 4px 6px rgba(0,0,0,0.15));}
+
+    /* efeito de fumaça: 3 bolinhas animadas saem do ponta direita da imagem */
+    .smoke{position:absolute;right:-6px;top:6px;pointer-events:none;width:40px;height:64px;display:block;overflow:visible}
+    .smoke span{position:absolute;bottom:6px;left:6px;width:14px;height:14px;border-radius:50%;opacity:0;background:radial-gradient(circle at 40% 30%, rgba(200,190,170,0.9), rgba(200,190,170,0.7) 30%, rgba(200,190,170,0.25) 60%, rgba(255,255,255,0));filter:blur(6px);transform-origin:center;}
+
+    /* três camadas, com tempos diferentes para parecer natural */
+    .s1{animation:rise 2.8s linear infinite;left:6px;width:12px;height:12px}
+    .s2{animation:rise 3.6s linear -0.9s infinite;left:10px;width:16px;height:16px}
+    .s3{animation:rise 4.6s linear -1.8s infinite;left:2px;width:18px;height:18px}
+
+    @keyframes rise{
+      0%{transform:translateY(0) scale(0.6) rotate(0deg);opacity:0}
+      10%{opacity:0.6}
+      40%{opacity:0.45}
+      80%{opacity:0.08}
+      100%{transform:translateY(-110px) scale(1.4) rotate(12deg);opacity:0}
+    }
+
+    /* texto do nome: a imagem faz função do X */
+    .name{font-weight:700;font-size:44px;color:var(--accent);letter-spacing:1px}
+    .name small{display:block;font-size:12px;font-weight:600;color:#7a6b58;margin-top:6px}
+
+    /* conteudo demo para a página */
+    main{padding-top:150px;max-width:900px;margin:0 auto;}
+    .card{background:white;padding:28px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06);margin:28px 12px}
+
+    /* responsividade */
+    @media (max-width:480px){
+      header{height:90px}
+      .logo-wrap{width:48px;height:48px}
+      .name{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <!-- coloque aqui a imagem do charuto com o nome cigarrilha.png no mesmo diretório deste HTML -->
+      <div class="logo-wrap" aria-hidden="true">
+        <img src="cigarrilha.png" alt="logo xaruto" class="logo" />
+        <div class="smoke" aria-hidden="true">
+          <span class="s1"></span>
+          <span class="s2"></span>
+          <span class="s3"></span>
+        </div>
+      </div>
+
+      <div>
+        <!-- a imagem substitui o X; escrevemos 'aruto' ao lado -->
+        <div class="name">aruto</div>
+        <small style="color:#7a6b58;font-weight:600">Nome da marca</small>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Exemplo de conteúdo</h2>
+      <p>Este é um exemplo simples de página. O cabeçalho está fixo no topo, a imagem substitui o "X" de "Xaruto" — apenas salve sua imagem do charuto no mesmo diretório com o nome <code>cigarrilha.png</code> (ou troque no &lt;img&gt;).</p>
+      <p>O efeito de fumaça é feito em CSS (sem GIF). Se preferir que a fumaça seja exatamente a partir da ponta do seu arquivo de imagem, me envie o arquivo e eu ajusto o posicionamento.</p>
+    </div>
+
+    <div class="card">
+      <h3>Como usar</h3>
+      <ol>
+        <li>Baixe este arquivo (salve como <code>index.html</code>).</li>
+        <li>Salve a imagem do charuto no mesmo diretório com o nome <code>cigarrilha.png</code> (ou altere o atributo src).</li>
+        <li>Abra o <code>index.html</code> no navegador.</li>
+      </ol>
+    </div>
+  </main>
+</body>
+</html>
